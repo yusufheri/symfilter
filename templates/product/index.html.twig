@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous nos produits{% endblock %}
+
+{% block body %}
+    <div class="container-fluid ">
+        <div class="row ml-5 mr-5">
+            <div class="col-md-3 mb-2">
+                {% include "product/partials/_filter.html.twig"  with {form: form, min: min, max: max} %}
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md navigation" >
+                        {{ knp_pagination_render(products) }}
+                    </div>
+                    <div class="col-md">
+                        <div class="d-flex justify-content-end ">
+                            {{ knp_pagination_sortable(products, 'Prix', 'p.price') }}
+                            {{ knp_pagination_sortable(products, 'Promo', 'p.promo') }}
+                        </div>                        
+                    </div>
+                </div>
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-md-4">
+                            {% include "product/partials/_card.html.twig" with {product: product} %}
+                        </div>
+                    {% endfor %}                    
+                </div>
+                   
+            </div>
+        </div>
+    </div>
+{% endblock %}
