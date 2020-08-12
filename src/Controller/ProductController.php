@@ -31,7 +31,9 @@ class ProductController extends AbstractController
             return new JsonResponse([
                 'content' => $this->renderView('product/partials/_product.html.twig', ['products' => $products]),
                 'sorting' => $this->renderView('product/partials/_sorting.html.twig', ['products' => $products]),
-                'pagination' => $this->renderView('product/partials/_pagination.html.twig', ['products' => $products])
+                'pagination' => $this->renderView('product/partials/_pagination.html.twig', ['products' => $products]),
+                'min' => $min,
+                'max' => $max
             ]);
         }
 

@@ -1,5 +1,5 @@
 {% for product in products %}
-    <div class="col-md-4">
+    <div class="col-md-4" id = "product-{{ product.id }}">
         {% include "product/partials/_card.html.twig" with {product: product} %}
     </div>
 {% endfor %}   
